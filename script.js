@@ -109,15 +109,16 @@ const convertToRomanNumeral = (e) => {
         tempArr.unshift(romanNumArr[romanNumIndex * 2]); //index must be doubled, because the roman numerals in our initialized array have a step of 5 instead of 10
       }
 
-      // Sub-function 2 and 3, check/convert repetition
+      // Sub-function 2 and 3, check/convert repetition before the inhalt of the tempArr being added to the resultArr. Then beginns the next round of outer for-loop (next digit)
       if (checkFourFiveOrMore(tempArr)) {
         tempArr = convertFourFiveOrMore([
           ...checkFourFiveOrMore(tempArr),
           romanNumArr,
           tempArr,
         ]);
-      }
-      //add tempArr to resultArr and reset tempArr
+      } //end of inner for-loop 
+
+      //add tempArr to the begin of the resultArr and reset tempArr
       resultArr = tempArr.concat(resultArr);
       tempArr = [];
       //as the digit being converted proceeds from right to left, update also the roman numeral to the next one
