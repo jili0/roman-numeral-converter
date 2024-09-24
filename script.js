@@ -32,11 +32,11 @@ const isInputValid = (input) => {
 const checkFourFiveOrMore = (tempArr) => {
   const matchFour = tempArr.join("").match(/.{4}/);
   const matchFive = tempArr.join("").match(/.{5}/);
-  const matchMoreThanFive = tempArr.join("").match(/.{6}/);
+  const matchMoreThanFive = tempArr.join("").match(/.{6,}/);
   let repeatedRomanNumeral;
   if (matchMoreThanFive) {
     repeatedRomanNumeral = matchMoreThanFive[0].split("")[0];
-    return [6, repeatedRomanNumeral];
+    return [matchMoreThanFive[0].length, repeatedRomanNumeral];
   } else if (matchFive) {
     repeatedRomanNumeral = matchFive[0].split("")[0];
     return [5, repeatedRomanNumeral];
@@ -66,7 +66,7 @@ const convertFourFiveOrMore = ([
     return Array.from(
       romanNumArr[romanNumArr.indexOf(repeatedRomanNumeral) + 1]
     );
-  } else if (num >= 6) {
+  } else if (num >= 6) {    
     // IIIIIIIII (9 * I) ? IX : VIII (by 8 * I)
     return tempArr.slice(5).length === 4
       ? tempArr
