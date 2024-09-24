@@ -7,21 +7,25 @@ const isInputValid = (input) => {
   if (isNaN(input)) {
     outputParagraph.textContent = "Please enter a valid number";
     toggleOutput();
+    inputEl.value = ""
     return false;
   } else if (input === 0) {
     outputParagraph.textContent =
       "There is no zero(0) in the Roman numeral system";
     toggleOutput();
+    inputEl.value = ""
     return false;
   } else if (input === 1 || input < 0) {
     outputParagraph.textContent =
       "Please enter a number greater than or equal to 1";
     toggleOutput();
+    inputEl.value = ""
     return false;
   } else if (input >= 4000) {
     outputParagraph.textContent =
       "Please enter a number less than or equal to 3999";
     toggleOutput();
+    inputEl.value = ""
     return false;
   }
 
@@ -124,8 +128,9 @@ const convertToRomanNumeral = (e) => {
       romanNumIndex -= 2;
     }
 
-    outputParagraph.textContent = resultArr.join("");
+    outputParagraph.textContent = `${inputEl.value} => ${resultArr.join("")}`;
     toggleOutput();
+    inputEl.value = ""
   }
 };
 convertBtn.addEventListener("click", (e) => convertToRomanNumeral(e));
