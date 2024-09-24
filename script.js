@@ -102,7 +102,7 @@ const convertToRomanNumeral = (e) => {
     let tempArr = [];
     let resultArr = [];
 
-    // 2. outer for-loop, loops through the input digits from left to right ( big to small ) 
+    // 2. outer for-loop, loops through the input digits from left to right ( from biger place value to smaller place value ) 
     for (let i = 0; i < inputIntArr.length; i++) {
       //inner for-loop, convert digit one by one
       for (let x = 0; x < inputIntArr[i]; x++) {
@@ -120,7 +120,7 @@ const convertToRomanNumeral = (e) => {
       //add tempArr to the resultArr and reset tempArr
       resultArr = resultArr.concat(tempArr);
       tempArr = [];
-      //update also the roman numeral index (move two steps to the left, because the roman numerals in our array have a step of 5 instead 10 and just like the digit being handled, it shall move from big to small)
+      //update also the roman numeral index (move two steps to the left, because the roman numerals in our array have a step of 5 instead 10 and just like the digit being handled, it shall move from biger value  to smaller value)
       romanNumIndex -= 2;
     }
 
