@@ -97,32 +97,31 @@ const convertToRomanNumeral = (e) => {
   if (isInputValid(inputInt)) {
     // 1. initialization
     const inputIntArr = inputInt.toString().split("");
-    let romanNumIndex = 0;
+    let romanNumIndex = (inputIntArr.length - 1) * 2;
     const romanNumArr = ["I", "V", "X", "L", "C", "D", "M"];
     let tempArr = [];
     let resultArr = [];
 
-    // 2. outer for-loop, loops through the length of the input digits, index from big to small => digits from right to left (in inner for-loop)
-    for (let i = inputIntArr.length - 1; i >= 0; i--) {
-      //inner for-loop, convert digit one by one, from right to left
+    // 2. outer for-loop, loops through the input digits from left to right ( big to small ) 
+    for (let i = 0; i < inputIntArr.length; i++) {
+      //inner for-loop, convert digit one by one
       for (let x = 0; x < inputIntArr[i]; x++) {
-        tempArr.unshift(romanNumArr[romanNumIndex * 2]); //index must be doubled, because the roman numerals in our initialized array have a step of 5 instead of 10
-      }
+        tempArr.unshift(romanNumArr[romanNumIndex]); 
+      } //end of the inner for-loop
 
-      // Sub-function 2 and 3, check/convert repetition before the inhalt of the tempArr being added to the resultArr. Then beginns the next round of outer for-loop (next digit)
+      // before the next digit being converted, the Sub-function 2 and 3 checks/handles repetition, than add the inhalt of the tempArr to the resultArr. 
       if (checkFourFiveOrMore(tempArr)) {
         tempArr = convertFourFiveOrMore([
           ...checkFourFiveOrMore(tempArr),
           romanNumArr,
           tempArr,
         ]);
-      } //end of inner for-loop 
-
-      //add tempArr to the begin of the resultArr and reset tempArr
-      resultArr = tempArr.concat(resultArr);
+      } 
+      //add tempArr to the resultArr and reset tempArr
+      resultArr = resultArr.concat(tempArr);
       tempArr = [];
-      //as the digit being converted proceeds from right to left, update also the roman numeral to the next one
-      romanNumIndex++;
+      //update also the roman numeral index (move two steps to the left, because the roman numerals in our array have a step of 5 instead 10 and just like the digit being handled, it shall move from big to small)
+      romanNumIndex -= 2;
     }
 
     outputParagraph.textContent = resultArr.join("");
