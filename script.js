@@ -49,24 +49,24 @@ const checkFourFiveOrMore = (tempArr) => {
 
 // Sub-function 3: According to the result of the sub-function 2, if the tempArr includes 4, 5 or 6-9 roman numerals (special case 9), convert it one more time. This function should return a new array, that replaces the current tempArr and will be added to the resultArr later on.
 const convertFourFiveOrMore = ([
-  num,
+  repeatTimes,
   repeatedRomanNumeral,
   romanNumArr,
   tempArr,
 ]) => {
-  if (num === 4) {
+  if (repeatTimes === 4) {
     // IIII => IV
     return tempArr
       .slice(3)
       .concat(
         Array.from(romanNumArr[romanNumArr.indexOf(repeatedRomanNumeral) + 1])
       );
-  } else if (num === 5) {
+  } else if (repeatTimes === 5) {
     // IIIII => V
     return Array.from(
       romanNumArr[romanNumArr.indexOf(repeatedRomanNumeral) + 1]
     );
-  } else if (num >= 6) {    
+  } else if (repeatTimes >= 6) {    
     // IIIIIIIII (9 * I) ? IX : VIII (by 8 * I)
     return tempArr.slice(5).length === 4
       ? tempArr
