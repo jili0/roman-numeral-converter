@@ -1,10 +1,6 @@
 @font-face {
-  font-family: Roboto-Bold;
-  src: url(./fonts/Roboto-Bold.ttf);
-}
-@font-face {
-  font-family: Roboto-Regular;
-  src: url(./fonts/Roboto-Regular.ttf);
+  font-family: "NotoSerifDisplay-VariableFont_wdth,wght";
+  src: url(./NotoSerifDisplay-VariableFont_wdth,wght.ttf);
 }
 
 * {
@@ -17,9 +13,23 @@ html {
   background-color: black;
 }
 
+h1 {
+  font-synthesis: none;
+  font-weight: normal;
+}
+
+
+@supports (font-variation-settings: normal) {
+  h1 {
+    font-weight: 752;
+  }
+}
+
 body {
-  font-family: "Roboto-Regular", sans-serif;
-  background-color: slateblue;
+  font-family: "NotoSerifDisplay-VariableFont_wdth,wght", serif;
+  background-image: 
+    radial-gradient(ellipse at top, slateblue 50%, transparent),
+    radial-gradient(ellipse at bottom, steelblue,transparent);               
   color: whitesmoke;
   display: grid;
   place-content: center;
@@ -48,7 +58,7 @@ body {
 
 h1 {
   text-shadow: 1px 1px 5px rgb(2,2,2,.2);
-  font-family: "Roboto-Bold", sans-serif;
+  font-family: "NotoSerifDisplay-VariableFont_wdth,wght", serif;
 }
 
 input, button {
@@ -86,5 +96,5 @@ p {
   font-size: 1.5rem;
   min-height: 4rem;
   background-color: whitesmoke;
-  color: slateblue
+  color: slateblue;
 }
