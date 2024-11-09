@@ -7,52 +7,42 @@ const isInputValid = (input) => {
   if (isNaN(input)) {
     outputParagraph.textContent = "Please enter a valid number";
     toggleOutput();
-    inputEl.value = ""
+    inputEl.value = "";
     return false;
   } else if (input === 0) {
     outputParagraph.textContent =
       "There is no zero(0) in the Roman numeral system";
     toggleOutput();
-    inputEl.value = ""
+    inputEl.value = "";
     return false;
   } else if (input === 1 || input < 0) {
     outputParagraph.textContent =
       "Please enter a number greater than or equal to 1";
     toggleOutput();
-    inputEl.value = ""
+    inputEl.value = "";
     return false;
   } else if (input >= 4000) {
     outputParagraph.textContent =
       "Please enter a number less than or equal to 3999";
     toggleOutput();
-    inputEl.value = ""
+    inputEl.value = "";
     return false;
   }
 
   return true;
 };
 
-// Sub-function 2: check whether the tempArr includes 4, 5 or 6-9 identical roman numbers. If so, it needs to be converted again respectively later. Here in this function, it should tell a) which roman numeral is being repeated and b) how many times does it repeat
-const checkFourFiveOrMore = (tempArr) => {
-  const matchFour = tempArr.join("").match(/.{4}/);
-  const matchFive = tempArr.join("").match(/.{5}/);
-  const matchMoreThanFive = tempArr.join("").match(/.{6,}/);
+// Sub-function 2: check whether the tempArr includes 4 or more identical roman numbers. If so, it needs to be converted again respectively later. Here in this function, it should tell a) which roman numeral is being repeated and b) how many times does it repeat
+const checkFourOrMore = (tempArr) => {
+  const matchFourOrMore = tempArr.join("").match(/.{4,}/);
   let repeatedRomanNumeral;
-  if (matchMoreThanFive) {
-    repeatedRomanNumeral = matchMoreThanFive[0].split("")[0];
-    return [matchMoreThanFive[0].length, repeatedRomanNumeral];
-  } else if (matchFive) {
-    repeatedRomanNumeral = matchFive[0].split("")[0];
-    return [5, repeatedRomanNumeral];
-  } else if (matchFour) {
-    repeatedRomanNumeral = matchFour[0].split("")[0];
-    return [4, repeatedRomanNumeral];
-  }
-  return false;
+  if (!matchFourOrMore) return;
+  repeatedRomanNumeral = matchFourOrMore[0].split("")[0];
+  return [matchFourOrMore[0].length, repeatedRomanNumeral];
 };
 
 // Sub-function 3: According to the result of the sub-function 2, if the tempArr includes 4, 5 or 6-9 roman numerals (special case 9), convert it one more time. This function should return a new array, that replaces the current tempArr and will be added to the resultArr later on.
-const convertFourFiveOrMore = ([
+const convertFourOrMore = ([
   repeatTimes,
   repeatedRomanNumeral,
   romanNumArr,
@@ -70,7 +60,7 @@ const convertFourFiveOrMore = ([
     return Array.from(
       romanNumArr[romanNumArr.indexOf(repeatedRomanNumeral) + 1]
     );
-  } else if (repeatTimes >= 6) {    
+  } else if (repeatTimes >= 6) {
     // IIIIIIIII (9 * I) ? IX : VIII (by 8 * I)
     return tempArr.slice(5).length === 4
       ? tempArr
@@ -106,21 +96,21 @@ const convertToRomanNumeral = (e) => {
     let tempArr = [];
     let resultArr = [];
 
-    // 2. outer for-loop, loops through the input digits from left to right ( from biger place value to smaller place value ) 
+    // 2. outer for-loop, loops through the input digits from left to right ( from biger place value to smaller place value )
     for (let i = 0; i < inputIntArr.length; i++) {
       //inner for-loop, convert digit one by one
       for (let x = 0; x < inputIntArr[i]; x++) {
-        tempArr.unshift(romanNumArr[romanNumIndex]); 
+        tempArr.unshift(romanNumArr[romanNumIndex]);
       } //end of the inner for-loop
 
-      // before the next digit being converted, the Sub-function 2 and 3 checks/handles repetition, than add the inhalt of the tempArr to the resultArr. 
-      if (checkFourFiveOrMore(tempArr)) {
-        tempArr = convertFourFiveOrMore([
-          ...checkFourFiveOrMore(tempArr),
+      // before the next digit being converted, the Sub-function 2 and 3 checks/handles repetition, than add the inhalt of the tempArr to the resultArr.
+      if (checkFourOrMore(tempArr)) {
+        tempArr = convertFourOrMore([
+          ...checkFourOrMore(tempArr),
           romanNumArr,
           tempArr,
         ]);
-      } 
+      }
       //add tempArr to the resultArr and reset tempArr
       resultArr = resultArr.concat(tempArr);
       tempArr = [];
@@ -130,7 +120,7 @@ const convertToRomanNumeral = (e) => {
 
     outputParagraph.textContent = `${inputEl.value} => ${resultArr.join("")}`;
     toggleOutput();
-    inputEl.value = ""
+    inputEl.value = "";
   }
 };
 convertBtn.addEventListener("click", (e) => convertToRomanNumeral(e));
