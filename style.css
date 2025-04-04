@@ -1,7 +1,4 @@
-@font-face {
-  font-family: "NotoSerifDisplay-VariableFont_wdth,wght";
-  src: url(./NotoSerifDisplay-VariableFont_wdth,wght.ttf);
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 
 * {
   padding: 0;
@@ -10,43 +7,31 @@
 }
 
 html {
-  background-color: black;
-}
-
-h1 {
-  font-synthesis: none;
-  font-weight: normal;
-}
-
-
-@supports (font-variation-settings: normal) {
-  h1 {
-    font-weight: 752;
-  }
+  background-color: #121212;
+  height: 100%;
 }
 
 body {
-  font-family: "NotoSerifDisplay-VariableFont_wdth,wght", serif;
+  font-family: 'Roboto', sans-serif;
   background-image: 
-    radial-gradient(ellipse at top, slateblue 50%, transparent),
-    radial-gradient(ellipse at bottom, steelblue,transparent);               
+    linear-gradient(135deg, #3a1c71 0%, #d76d77 50%, #ffaf7b 100%);              
   color: whitesmoke;
   display: grid;
   place-content: center;
   text-align: center;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 1.5rem;
+  padding: 2rem;
   min-height: 60vh;
   max-height: 32rem;
   max-width: 24rem;
-  border-radius: 14px;
+  border-radius: 16px;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 
-    inset 2px 2px 5px 2px rgb(200,200,200,.2),
-    inset -2px -2px 5px 2px rgb(2,2,2,.2);
+    0 10px 20px rgba(0, 0, 0, 0.19), 
+    0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 @media screen and (width < 1024px) {
@@ -57,44 +42,68 @@ body {
 }
 
 h1 {
-  text-shadow: 1px 1px 5px rgb(2,2,2,.2);
-  font-family: "NotoSerifDisplay-VariableFont_wdth,wght", serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 input, button {
-  font: inherit;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.5;
-  padding: .2rem;
-  border-radius: 4px;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
   border: none;
-  transition: all .1s;
-  color: slateblue;
+  transition: all 0.2s ease;
+  width: 100%;
+  font: inherit;
 }
 
 input {
-   box-shadow: 0px 0px 5px 2px rgb(2,2,2,.2);
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: #333;
 }
 
-input:hover, button:hover {
-  opacity: .9;
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+input::placeholder {
+  color: #777;
 }
 
 button {
-  box-shadow: inset 2px 2px 5px 2px white, inset -2px -2px 5px 2px rgb(2,2,2,.2), 0px 0px 5px 2px rgb(2,2,2,.2);
+  margin-top: 0.5rem;
+  background-color: #d76d77;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #e07d87;
+  transform: translateY(-2px);
 }
 
 button:active {
-  box-shadow: inset 2px 2px 5px 2px rgb(2,2,2,.2), inset -2px -2px 5px 2px white, 0px 0px 5px 2px rgb(2,2,2,.2);
+  transform: translateY(1px);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 
 p {
   opacity: 0;
-  border: 2px solid white;
-  border-radius: 4px;
-  justify-self: center;
+  border-radius: 8px;
   padding: 1rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   min-height: 4rem;
-  background-color: whitesmoke;
-  color: slateblue;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
