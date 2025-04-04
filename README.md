@@ -4,9 +4,18 @@ A sleek web application that converts decimal numbers to Roman numerals. This pr
 
 ## Screenshots
 
-| <img src="app-preview/preview1.png" width="250"><br>Main Application | <img src="app-preview/preview2.png" width="250"><br>Error: Non-numeric Input | <img src="app-preview/preview3.png" width="250"><br>Error: Zero Not Valid |
-|:----------------:|:----------------:|:----------------:|
-| <img src="app-preview/preview4.png" width="250"><br>Error: Negative Number | <img src="app-preview/preview5.png" width="250"><br>Error: Number Exceeds 3999 | <img src="app-preview/preview6.png" width="250"><br>Successful Conversion |
+<table>
+  <tr>
+    <td align="center" style="border: none;"><img src="app-preview/preview1.png" width="250"><br>Main Application</td>
+    <td align="center" style="border: none;"><img src="app-preview/preview2.png" width="250"><br>Error: Non-numeric Input</td>
+    <td align="center" style="border: none;"><img src="app-preview/preview3.png" width="250"><br>Error: Zero Not Valid</td>
+  </tr>
+  <tr>
+    <td align="center" style="border: none;"><img src="app-preview/preview4.png" width="250"><br>Error: Negative Number</td>
+    <td align="center" style="border: none;"><img src="app-preview/preview5.png" width="250"><br>Error: Number Exceeds 3999</td>
+    <td align="center" style="border: none;"><img src="app-preview/preview6.png" width="250"><br>Successful Conversion</td>
+  </tr>
+</table>
 
 ## Features
 
